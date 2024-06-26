@@ -4,6 +4,9 @@
              x:Class="AppControleFinanceiro.Views.TransactionList"
              Title="TransactionList"
              NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary Source="/Resources/Styles/Colors.xaml"/>
+    </ContentPage.Resources>
     <VerticalStackLayout>
 
         <Grid Padding="15" ColumnDefinitions="50, *, Auto">
