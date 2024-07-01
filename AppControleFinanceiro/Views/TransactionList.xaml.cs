@@ -1,3 +1,4 @@
+using AppControleFinanceiro.Models;
 using AppControleFinanceiro.Repositories;
 using CommunityToolkit.Mvvm.Messaging;
 using System.Runtime.CompilerServices;
@@ -44,10 +45,16 @@ public partial class TransactionList : ContentPage
 		Navigation.PushModalAsync(transactionAdd);
 	}
 
-    private void OnButtonClicked_To_TransactionEdit(object sender, EventArgs e)
+    private void TapGestureRecognizerTapped_To_TransactionEdit(object sender, TappedEventArgs e)
     {
+        //Coleta de parametros do tipo transaction que estão sendo passados pela tela de listagem ao clickar no item
+        var grid = (Grid)sender;
+        var gesture = (TapGestureRecognizer)grid.GestureRecognizers[0];
+        var transaction = (Transaction)gesture.CommandParameter;
+
         //Cria uma nova estância a cada solicitação da tela de editar
         var transactionEdit = Handler.MauiContext.Services.GetService<TransactionEdit>();
+        transactionEdit.SetTransactionToEdit(transaction);
         Navigation.PushModalAsync(transactionEdit);
     }
 }

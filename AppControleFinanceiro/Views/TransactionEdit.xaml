@@ -22,15 +22,15 @@
         </Border>
 
         <Grid ColumnDefinitions="*,*" Margin="30,0">
-            <RadioButton Grid.Column="0" IsChecked="True" Content="Receita"/>
-            <RadioButton HorizontalOptions="End" Grid.Column="1" Content="Despesa"/>
+            <RadioButton x:Name="RadioIncome" Grid.Column="0" IsChecked="True" Content="Receita"/>
+            <RadioButton x:Name="RadioExpense" HorizontalOptions="End" Grid.Column="1" Content="Despesa"/>
         </Grid>
 
-        <Entry Placeholder="Nome" Margin="15,0"/>
+        <Entry x:Name="EntryName" Placeholder="Nome" Margin="15,0"/>
 
-        <DatePicker Margin="15,0"/>
+        <DatePicker x:Name="DatePickerDate" Margin="15,0"/>
 
-        <Entry Placeholder="Valor" Margin="15,0"/>
+        <Entry x:Name="EntryValue" Placeholder="Valor" Margin="15,0"/>
 
         <Button Margin="15,0" Text="Salvar" HorizontalOptions="Center"/>
 
