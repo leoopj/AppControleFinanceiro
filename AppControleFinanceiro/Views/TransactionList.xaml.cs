@@ -25,7 +25,16 @@ public partial class TransactionList : ContentPage
     private void Reload()
     {
         //Atribui lista de dados para coleção ser apresentada no front
-        CollectionViewTransaction.ItemsSource = _repository.GetAll();
+        var items = _repository.GetAll();
+        CollectionViewTransaction.ItemsSource = items;
+
+        double sumIncome = items.Where(x => x.Type == Models.Enums.TransactionType.Income).Sum(x => x.Value);
+        double sumExpense = items.Where(x => x.Type == Models.Enums.TransactionType.Expense).Sum(x => x.Value);
+        double balance = sumIncome - sumExpense;
+
+        LabelIncome.Text = sumIncome.ToString("C");
+        LabelExpense.Text = sumExpense.ToString("C");
+        LabelBalance.Text = balance.ToString("C");
     }
 
     private void OnButtonClicked_To_TransactionAdd(object sender, EventArgs args)
